@@ -1,5 +1,0 @@
-module modulo();
-
-
-
-endmodule
