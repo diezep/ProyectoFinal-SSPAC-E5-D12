@@ -37,7 +37,7 @@ begin
 			assign OPS = OP1 * OP2;
 	endcase
 
-	if(OPS)
+	if(OPS==0)
 		ZF <= 1;
 	else 
 		ZF <= 0;
