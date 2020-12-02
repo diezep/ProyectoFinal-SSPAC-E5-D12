@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module ALU(
 	input[31:0] OP1,
 	input[31:0] OP2,
@@ -29,7 +31,7 @@ begin
 			assign OPS = OP1 / OP2;
 		
 		3'b110:
-			assign OPS = 32'd0;
+			#0;
 		
 		3'b111:
 			assign OPS = OP1 * OP2;
