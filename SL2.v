@@ -1,7 +1,7 @@
 
 module SL2(
-input [32:0]datain,
-output reg [32:0]dataout
+ input [31:0]datain,
+ output reg [31:0]dataout
 );
 //reg y wire
 
