@@ -6,7 +6,7 @@ module mem(
     output reg [31:0]dato
 );
 
-reg [31:0]memo[0:31];
+    reg [31:0]memo[0:511];
 
 
 always @*
