@@ -1,4 +1,4 @@
-module mem(
+module MEM(
     input [31:0]dati,
     input memwrite,
     input memread,
