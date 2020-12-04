@@ -31,7 +31,7 @@ begin
 			assign OPS = OP1 / OP2;
 		
 		3'b110:
-			#0;
+			assign OPS = 32'd0;
 		
 		3'b111:
 			assign OPS = OP1 * OP2;
