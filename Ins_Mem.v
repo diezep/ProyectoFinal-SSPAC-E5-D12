@@ -8,7 +8,12 @@ reg [7:0]Imem[0:511];
 
 always@*
 	begin
-		instruction={Imem[readA],Imem[readA+1],Imem[readA+2],Imem[readA+3]};
+		instruction={
+			Imem[readA],
+			Imem[readA+1],
+			Imem[readA+2],
+			Imem[readA+3]
+		};
 	end
 	
 endmodule
