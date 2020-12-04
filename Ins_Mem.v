@@ -4,7 +4,7 @@ output reg [31:0]instruction
 
 );
 
-reg [7:0]Imem[0:127];
+reg [7:0]Imem[0:511];
 
 always@*
 	begin
