@@ -1,9 +1,14 @@
-
 module Ins_Mem(
-input pcin,
-output reg dataout
-);
-//Reg y wire
-reg [31:0]insMem[31:0];
+input[31:0]readA,
+output reg [31:0]instruction
 
-endmodule 
+);
+
+reg [7:0]Imem[0:127];
+
+always@*
+	begin
+		instruction={Imem[readA],Imem[readA+1],Imem[readA+2],Imem[readA+3]};
+	end
+	
+endmodule
