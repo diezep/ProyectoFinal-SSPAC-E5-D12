@@ -1,4 +1,4 @@
-module Ins_Mem(
+module INSTMEM(
 input[31:0]readA,
 output reg [31:0]instruction
 
