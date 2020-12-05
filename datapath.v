@@ -45,7 +45,7 @@ INSTMEM intructionMemory(
 );
 
 UC unidadControl(
-    .inscod(INSTMEM_instruction[31:26]),
+    	.inscod(INSTMEM_instruction[31:26]),
 	.RegDist(UCtoMUX_regDist),
 	.Branch(CAND1),
 	.MemRead(UCtoMEM_MEMREAD),
@@ -100,10 +100,10 @@ MUX2_1 muxALURESULTtoDIRtoMUX(
 
 ALU alu(
     .OP1(BRtoALU_OP1),
-	.OP2(MUXtoALU_OP2),
-	.OP(ALUCtoALU_ALUOP),
-	.OPS(ALUtoMEM_OPSDIR),
-	.ZF(CAND2)
+    .OP2(MUXtoALU_OP2),
+    .OP(ALUCtoALU_ALUOP),
+    .OPS(ALUtoMEM_OPSDIR),
+    .ZF(CAND2)
 );
 
 MEM MEMDATA(
