@@ -1,6 +1,5 @@
 module DATAPATH(
-    input clk,
-    output[31:0] result
+    input clk
 );
 
 
