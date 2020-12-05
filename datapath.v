@@ -28,7 +28,8 @@ wire UCtoMUX2_1_BRANCH;
 wire [31:0]MUXtoPC_IN;
 wire [31:0]ADDtoMUX2_1_OUT;
 wire [31:0]ADD_SLtoMux2_1;
-wire [31:0] SHIFTLEFTtoADDER_adder;
+wire [31:0]SHIFTLEFTtoADDER_adder;
+wire [31:0]ADDSL2toMUXPC;
 
 assign UCtoMUX2_1_BRANCH = CAND1&CAND2; 
 
@@ -55,8 +56,8 @@ UC unidadControl(
 	.Regwrite(UCtoBR_regWrite)
 );
 
-MUX2_1 muxINSTMEMtoBR(
-    .SELOP(UCtoMUX_regDist),
+muxrdst MUXtoBR(
+    .SEL_RDST(UCtoMUX_regDist),
     .OP0(INSTMEM_instruction[20:16]),
     .OP1(INSTMEM_instruction[15:11]),
     .OPS(MUXtoBR_OPS)
@@ -96,12 +97,6 @@ MUX2_1 muxALURESULTtoDIRtoMUX(
     .OPS(MUX2_1toBR_DIN)
 );
 
-MUX2_1 MUX_CICLO_FETCH(
-    .SELOP(UCtoMUX2_1_BRANCH),
-    .OP0(ADDtoMUX2_1_OUT),
-    .OP1(ADD_SLtoMux2_1),
-    .OPS(MUXtoPC_IN)
-);
 
 ALU alu(
     .OP1(BRtoALU_OP1),
@@ -112,7 +107,7 @@ ALU alu(
 );
 
 MEM MEMDATA(
-    .dati(MUX2_1toBR_DIN),
+    .dati(BRtoMUX_dr2),
     .memwrite(UCtoMEM_MEMWRITE),
     .memread(UCtoMEM_MEMREAD),
     .dir(ALUtoMEM_OPSDIR),
@@ -121,18 +116,24 @@ MEM MEMDATA(
 
 ADD pctoMuxAdder(
     .OP(PCtoINSTMEManADDER),
-    .ADDER(4),
     .OPS(ADDtoMUX2_1_OUT)    
 );
-ADD MUXtoPC(
-    .OP(ADDtoMUX2_1_OUT),
-    .ADDER(SHIFTLEFTtoADDER_adder),
-    .OPS(ADD_SLtoMux2_1)    
+MUX2_1 MUXtoPC(
+    .SELOP(UCtoMUX2_1_BRANCH),
+    .OP0(ADDtoMUX2_1_OUT),
+    .OP1(ADDSL2toMUXPC),
+    .OPS(MUXtoPC_IN)    
 );
 
 SL2 shiftLeft(
   .datain(SIGNEXTENDtoMUXandSF_ex32),
   .dataout(SHIFTLEFTtoADDER_adder)
+);
+
+addsl2 AdderSL2(
+    .OP(ADDtoMUX2_1_OUT),
+    .OP1(SHIFTLEFTtoADDER_adder),
+    .OPS(ADDSL2toMUXPC)
 );
 
 endmodule
