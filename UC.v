@@ -1,4 +1,3 @@
-
 module UC(
 	input [5:0]inscod,
 	output reg RegDist,
