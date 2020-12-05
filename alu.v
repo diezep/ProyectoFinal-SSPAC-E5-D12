@@ -6,38 +6,31 @@ module ALU(
 	output reg ZF
 );
 
-always @(*)
+always @*
 begin
 
 	case(OP)
 		3'b000:
-			assign OPS = OP1 & OP2;
-		
+			OPS = OP1 & OP2;
 		3'b001:
-			assign OPS = OP1 | OP2;
-		
+			OPS = OP1 | OP2;
 		3'b010:
-			assign OPS = OP1 + OP2;
-		
+			OPS = OP1 + OP2;
 		3'b011:
-			assign OPS = OP1 - OP2;	
-		
+			OPS = OP1 - OP2;	
 		3'b100:
-			assign OPS = OP1 < OP2 ? 1 : 0;
-			
+			OPS = OP1 < OP2 ? 1 : 0;
 		3'b101:
-			assign OPS = OP1 / OP2;
-		
+			OPS = OP1 / OP2;
 		3'b110:
-			assign OPS = 32'd0;
-		
+			OPS = 32'd0;
 		3'b111:
-			assign OPS = OP1 * OP2;
+			OPS = OP1 * OP2;
 	endcase
 
 	if(OPS==0)
-		ZF <= 1;
+		ZF = 1;
 	else 
-		ZF <= 0;
+		ZF = 0;
 end
 endmodule
