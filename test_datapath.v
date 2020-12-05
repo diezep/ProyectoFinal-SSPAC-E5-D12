@@ -9,16 +9,15 @@ DATAPATH datapath(
     .result(result_tb)
 );
 
-always @(*) begin
-    #5;
-    clk_tb =! clk_tb;    
+always 
+begin
+    #5 clk_tb =! clk_tb;    
 end
 
-initial
+initial 
 begin
-  $readmemb("C:/Users/PC/Desktop/Datapath/ProyectoFinal-SSPAC-E5-D12-main/bank_registers.txt", datapath.bancoRegistros.br);
-  #100;
-  $readmemb("C:/Users/PC/Desktop/Datapath/ProyectoFinal-SSPAC-E5-D12-main/instructions.txt", datapath.intructionMemory.Imem);
+    $readmemb("TestF1_BReg.mem", datapath.bancoRegistros.br);
+    $readmemb("TestF1_MemInst.mem", datapath.intructionMemory.Imem);
 end
 
 endmodule
