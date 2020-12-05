@@ -2,11 +2,9 @@
 module test_datapath ();
     
 reg clk_tb = 1;
-wire[31:0] result_tb;
 
 DATAPATH datapath(
-    .clk(clk_tb),
-    .result(result_tb)
+    .clk(clk_tb)
 );
 
 always 
