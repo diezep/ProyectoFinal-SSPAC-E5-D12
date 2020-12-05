@@ -12,8 +12,7 @@ always@*
 			Imem[readA],
 			Imem[readA+1],
 			Imem[readA+2],
-			Imem[readA+3]
-		};
+			Imem[readA+3]};
 	end
 	
 endmodule
