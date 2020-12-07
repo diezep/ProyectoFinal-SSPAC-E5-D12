@@ -4,7 +4,6 @@ module ALUC (
     output reg[2:0] ALU_aluOp
 );
 
-
 always @*
     begin
         case(UC_aluOp)
