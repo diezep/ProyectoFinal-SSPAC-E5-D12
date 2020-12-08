@@ -12,12 +12,12 @@ module MEM_WB(
     output reg [4:0] oWriteRegister
 );
 
-always @(posedge clk ) begin
-    oRegWrite       <=iRegWrite;
-    oMemToReg       <=iMemToReg;
-    oMemRes         <=iMemRes;
-    oAluRes         <=iAluRes;
-    oWriteRegister  <=iWriteRegister;
+always @(posedge clk ) 
+begin
+    oRegWrite <= iRegWrite;
+    oMemToReg <= iMemToReg;
+    oMemRes <= iMemRes;
+    oAluRes <= iAluRes;
+    oWriteRegister <= iWriteRegister;
 end
-
 endmodule
