@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-module test_datapath ();
+module test_datapathI ();
     
 reg clk_tb = 1;
 
@@ -15,7 +15,7 @@ end
 initial 
 begin
     $readmemb("TestF1_BReg.mem", datapath.bancoRegistros.br);
-    $readmemb("TestF1_MemInst.mem", datapath.intructionMemory.Imem);
+    $readmemb("TestF2_MemInst.mem", datapath.intructionMemory.Imem);
 end
 
 endmodule

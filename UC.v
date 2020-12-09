@@ -57,14 +57,14 @@ begin
 	6'b001101:		//Ori
 		begin
 			RegDist=0;
-			Regwrite=1;
-			MemWrite=0;
-			Memtoreg=0;
 			ALUsrc=1;
-			Branch=0;
-			MemRead=0;
-			ALUop=4'b0010;
 			jump=0;	
+			Memtoreg=0;
+			Regwrite=1;
+			MemRead=0;
+			MemWrite=0;
+			Branch=0;
+			ALUop=4'b0010;
 		end	
 	6'b001010:		//slti
 		begin
@@ -90,18 +90,7 @@ begin
 			ALUop=4'b0101;
 			jump=0;	
 		end	
-	6'b000101:		//Branch non equal
-		begin
-			RegDist=0;
-			Regwrite=0;
-			MemWrite=0;
-			Memtoreg=0;
-			ALUsrc=0;
-			Branch=1;
-			MemRead=0;
-			ALUop=4'b0110;
-			jump=0;	
-		end	
+
 	6'b100011:		//Load word
 		begin
 			RegDist=0;
@@ -137,18 +126,6 @@ begin
 			MemRead=0;
 			ALUop=4'b0110;
 			jump=1;
-		end
-	6'b000111:    //bgtz
-		begin
-			RegDist=0;
-			Regwrite=0;
-			MemWrite=0;
-			Memtoreg=0;
-			ALUsrc=0;
-			Branch=1;
-			MemRead=0;
-			ALUop=4'b1001;
-			jump=0;
 		end
 
 	endcase
